@@ -17,15 +17,9 @@ public class Milestone {
 
     @Column(name= "TITLE", nullable = false)
     private String title;
-
-    @Column(name = "BODY", nullable = false)
-    private String body;
-
-    @Column(name= "CREATED_AT")
-    private LocalDateTime createdAt;
-
-    @Column(name= "COMPLETED_BY")
-    private LocalDateTime completedBy;
+    
+    @Column(name = "STATUS")
+    private MilestoneStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AUTHOR")
@@ -35,6 +29,12 @@ public class Milestone {
     @JoinColumn(name = "PERSON_IN_CHARGE")
     private Member personInCharge;
 
-    @Column(name = "STATUS")
-    private MilestoneStatus status;
+    @Column(name= "CREATED_AT")
+    private LocalDateTime createdAt;
+
+    @Column(name= "COMPLETED_BY")
+    private LocalDateTime completedBy;
+
+    @Column(name = "BODY", nullable = false)
+    private String body;
 }
