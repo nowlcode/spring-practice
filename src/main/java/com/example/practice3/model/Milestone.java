@@ -17,7 +17,7 @@ public class Milestone {
 
     @Column(name= "TITLE", nullable = false)
     private String title;
-    
+
     @Column(name = "STATUS")
     private MilestoneStatus status;
 
@@ -37,4 +37,15 @@ public class Milestone {
 
     @Column(name = "BODY", nullable = false)
     private String body;
+
+    public Milestone(String title, MilestoneStatus status, Member author, Member personInCharge,
+                     LocalDateTime createdAt, LocalDateTime completedBy, String body){
+        this.title = title;
+        this.status = status;
+        this.author = author;
+        this.personInCharge = personInCharge;
+        this.createdAt = createdAt;
+        this.completedBy = completedBy;
+        this.body = body;
+    }
 }
