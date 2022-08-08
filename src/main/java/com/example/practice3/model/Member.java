@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Member {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long projectMemberId;
+    private Long memberId;
 
     @Column(name = "Name")
     private String name;
