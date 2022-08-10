@@ -1,10 +1,7 @@
 package com.example.practice3.dto;
 
 import com.example.practice3.model.Milestone;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -21,6 +18,7 @@ public class MilestoneResponse {
     private Long dueDay;
     private String body;
 
+    @Builder
     public MilestoneResponse(String title, String status, Long authorId, Long personInChargeId,
                              Long dueDay, String body){
         this.title = title;
@@ -32,12 +30,4 @@ public class MilestoneResponse {
 
     }
 
-    public void toResponse(Milestone milestone){
-        this.title = milestone.getTitle();
-        this.status = milestone.getStatus().toString();
-        this.authorId = milestone.getAuthor().getMemberId();
-        this.personInChargeId = milestone.getPersonInCharge().getMemberId();
-        this.dueDay = DAYS.between(milestone.getCreatedAt(), LocalDateTime.now());
-        this.body = milestone.getBody();
-    }
 }

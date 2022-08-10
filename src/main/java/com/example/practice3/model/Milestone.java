@@ -1,14 +1,17 @@
 package com.example.practice3.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.example.practice3.dto.MilestoneResponse;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 @Entity
 @Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Milestone {
@@ -47,5 +50,16 @@ public class Milestone {
         this.createdAt = createdAt;
         this.completedBy = completedBy;
         this.body = body;
+    }
+
+    public MilestoneResponse toResponse(Milestone milestone){
+        return MilestoneResponse.builder()
+                .title(milestone.getTitle())
+                .status(milestone.getStatus().toString())
+                .authorId(milestone.getAuthor().getMemberId())
+                .personInChargeId(milestone.getPersonInCharge().getMemberId())
+                .dueDay(DAYS.between(milestone.getCreatedAt(),LocalDateTime.now()))
+                .body(milestone.getBody())
+                .build();
     }
 }
