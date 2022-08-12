@@ -1,12 +1,12 @@
 package com.example.practice3.controller;
 
 import com.example.practice3.dto.MilestoneRequest;
+import com.example.practice3.dto.MilestoneResponse;
 import com.example.practice3.service.MilestoneService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/milestone")
@@ -16,7 +16,17 @@ public class MilestoneController {
 
     @PostMapping
     public void createMilestone(@RequestBody MilestoneRequest milestoneRequest){
+        milestoneService.createMilestone(milestoneRequest);
+    }
 
+    @GetMapping
+    public List<MilestoneResponse> getAllMilestones(){
+        return milestoneService.getAllMilestones();
+    }
+
+    @GetMapping("/{milestoneId}")
+    public MilestoneResponse getMilestoneById(@PathVariable Long milestoneId){
+        return milestoneService.getMilestoneById(milestoneId);
     }
 
 }

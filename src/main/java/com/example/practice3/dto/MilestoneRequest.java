@@ -17,4 +17,16 @@ public class MilestoneRequest {
     private String completedBy;
     private String body;
 
+//    @Builder
+//    public Milestone toEntity(MilestoneRequest milestoneRequest){
+//        return Milestone.builder()
+//                .title(milestoneRequest.getTitle())
+//                .status(MilestoneStatus.valueOf(milestoneRequest.getStatus()))
+//                .author(milestoneRequest.getAuthorId())
+//                .personInCharge()
+//                .createdAt()
+//                .completedBy()
+//                .body()
+//                .build();
+//    }
 }
