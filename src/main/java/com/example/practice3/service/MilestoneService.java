@@ -65,4 +65,9 @@ public class MilestoneService {
                 .body(milestoneRequest.getBody())
                 .build();
     }
+
+    public void updateMilestone(Long milestoneId, MilestoneRequest milestoneRequest) {
+
+//        milestoneRepository.save()
+    }
 }

@@ -29,4 +29,9 @@ public class MilestoneController {
         return milestoneService.getMilestoneById(milestoneId);
     }
 
+    @PutMapping("/{milestoneId}")
+    public void updateMilestone(@PathVariable Long milestoneId, @RequestBody MilestoneRequest milestoneRequest){
+        return milestoneService.updateMilestone(milestoneId, milestoneRequest);
+    }
+
 }
