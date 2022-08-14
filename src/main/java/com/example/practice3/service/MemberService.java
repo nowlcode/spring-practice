@@ -15,12 +15,29 @@ public class MemberService {
     //PostMapping
     public void createMember(MemberDto memberDto) {
         Member member = memberDto.toMember(memberDto);
-        memberRepository.save();
+        memberRepository.save(member);
     }
 
     //GetMapping
+    public MemberDto getMember(Long memberId){
+        Member member = memberRepository.findById(memberId).orElseThrow(
+                ()->new NullPointerException("Member not found!")
+        );
+        return member.toMemberDto(member);
+    }
 
     //PutMapping
+    public void updateMember(Long memberId, MemberDto memberDto){
+        Member member = memberRepository.findById(memberId).orElseThrow(
+                ()-> new NullPointerException("Member not found!")
+        );
+        member.update(member);
+        memberRepository.save(member);
+    }
 
     //DeleteMapping
+    public Long deleteMember(Long memberId){
+        memberRepository.deleteById(memberId);
+        return memberId;
+    }
 }

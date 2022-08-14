@@ -30,12 +30,17 @@ public class Member {
         this.role = role;
     }
 
-    @Builder
     public MemberDto toMemberDto(Member member){
         return MemberDto.builder()
                 .name(member.getName())
                 .picUrl(member.getPicUrl())
                 .role(member.getRole().toString())
                 .build();
+    }
+
+    public void update(Member member) {
+        this.name = member.getName();
+        this.picUrl = member.getPicUrl();
+        this.role = member.getRole();
     }
 }
