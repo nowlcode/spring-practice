@@ -2,6 +2,7 @@ package com.example.practice3.service;
 
 import com.example.practice3.dto.MilestoneRequest;
 import com.example.practice3.dto.MilestoneResponse;
+import com.example.practice3.model.Member;
 import com.example.practice3.model.Milestone;
 import com.example.practice3.model.MilestoneStatus;
 import com.example.practice3.repository.MemberRepository;
@@ -22,7 +23,8 @@ public class MilestoneService {
 
     //PostMapping
     public void createMilestone(MilestoneRequest milestoneRequest){
-
+        Milestone milestone = this.toEntity(milestoneRequest);
+        milestoneRepository.save(milestone);
     }
 
     //GetMapping (All)
@@ -44,10 +46,22 @@ public class MilestoneService {
     }
 
     //PutMapping
-
+    public void updateMilestone(Long milestoneId, MilestoneRequest milestoneRequest) {
+        Milestone milestone = milestoneRepository.findById(milestoneId).orElseThrow(
+                () -> new NullPointerException("Milestone not found!")
+        );
+        Member personInCharge = memberRepository.findById(milestoneRequest.getPersonInChargeId()).orElseThrow(
+                ()-> new NullPointerException("Member not found!")
+        );
+        milestone.update(milestoneRequest, personInCharge);
+        milestoneRepository.save(milestone);
+    }
 
     //DeleteMapping
-
+    public Long deleteMilestone(Long milestoneId) {
+        milestoneRepository.deleteById(milestoneId);
+        return milestoneId;
+    }
 
 
     public Milestone toEntity(MilestoneRequest milestoneRequest){
@@ -64,10 +78,5 @@ public class MilestoneService {
                 .completedBy(LocalDateTime.parse(milestoneRequest.getCompletedBy(),DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .body(milestoneRequest.getBody())
                 .build();
-    }
-
-    public void updateMilestone(Long milestoneId, MilestoneRequest milestoneRequest) {
-
-//        milestoneRepository.save()
     }
 }

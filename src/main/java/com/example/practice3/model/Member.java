@@ -1,5 +1,7 @@
 package com.example.practice3.model;
 
+import com.example.practice3.dto.MemberDto;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,4 +22,20 @@ public class Member {
 
     @Column(name = "Role")
     private MemberRole role;
+
+    @Builder
+    public Member(String name, String picUrl, MemberRole role){
+        this.name = name;
+        this.picUrl = picUrl;
+        this.role = role;
+    }
+
+    @Builder
+    public MemberDto toMemberDto(Member member){
+        return MemberDto.builder()
+                .name(member.getName())
+                .picUrl(member.getPicUrl())
+                .role(member.getRole().toString())
+                .build();
+    }
 }

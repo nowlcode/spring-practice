@@ -31,7 +31,12 @@ public class MilestoneController {
 
     @PutMapping("/{milestoneId}")
     public void updateMilestone(@PathVariable Long milestoneId, @RequestBody MilestoneRequest milestoneRequest){
-        return milestoneService.updateMilestone(milestoneId, milestoneRequest);
+        milestoneService.updateMilestone(milestoneId, milestoneRequest);
+    }
+
+    @DeleteMapping("/{milestoneId")
+    public Long deleteMilestone(@PathVariable Long milestoneId){
+        return milestoneService.deleteMilestone(milestoneId);
     }
 
 }
