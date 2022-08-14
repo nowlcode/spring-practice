@@ -19,4 +19,8 @@ public class MemberDto {
         this.role = role;
     }
 
+    public Member toMember(MemberDto memberDto) {
+        return Member.builder()
+                .build();
+    }
 }
