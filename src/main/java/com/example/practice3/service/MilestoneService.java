@@ -10,6 +10,7 @@ import com.example.practice3.repository.MilestoneRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -74,8 +75,8 @@ public class MilestoneService {
                 .personInCharge(memberRepository.findById(milestoneRequest.getPersonInChargeId()).orElseThrow(
                         ()-> new NullPointerException("Cannot find Person-In-Charge!")
                 ))
-                .createdAt(LocalDateTime.parse(milestoneRequest.getCreatedAt(),DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .completedBy(LocalDateTime.parse(milestoneRequest.getCompletedBy(),DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .createdAt(LocalDate.parse(milestoneRequest.getCreatedAt(),DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .completedBy(LocalDate.parse(milestoneRequest.getCompletedBy(),DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .body(milestoneRequest.getBody())
                 .build();
     }

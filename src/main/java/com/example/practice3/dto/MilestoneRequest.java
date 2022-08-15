@@ -1,8 +1,5 @@
 package com.example.practice3.dto;
 
-import com.example.practice3.model.Milestone;
-import com.example.practice3.model.MilestoneStatus;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +13,18 @@ public class MilestoneRequest {
     private String createdAt;
     private String completedBy;
     private String body;
+
+    public MilestoneRequest(String title, String status, Long authorId, Long personInChargeId,
+                            String createdAt, String completedBy, String body){
+        this.title = title;
+        this.status = status;
+        this.authorId = authorId;
+        this.personInChargeId = personInChargeId;
+        this.createdAt = createdAt;
+        this.completedBy = completedBy;
+        this.body = body;
+
+    }
 
 //    @Builder
 //    public Milestone toEntity(MilestoneRequest milestoneRequest){

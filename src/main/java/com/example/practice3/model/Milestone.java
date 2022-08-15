@@ -5,6 +5,7 @@ import com.example.practice3.dto.MilestoneResponse;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -35,16 +36,16 @@ public class Milestone {
     private Member personInCharge;
 
     @Column(name= "CREATED_AT")
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 
     @Column(name= "COMPLETED_BY")
-    private LocalDateTime completedBy;
+    private LocalDate completedBy;
 
     @Column(name = "BODY", nullable = false)
     private String body;
 
     public Milestone(String title, MilestoneStatus status, Member author, Member personInCharge,
-                     LocalDateTime createdAt, LocalDateTime completedBy, String body){
+                     LocalDate createdAt, LocalDate completedBy, String body){
         this.title = title;
         this.status = status;
         this.author = author;
@@ -60,7 +61,7 @@ public class Milestone {
                 .status(milestone.getStatus().toString())
                 .authorId(milestone.getAuthor().getMemberId())
                 .personInChargeId(milestone.getPersonInCharge().getMemberId())
-                .dueDay(DAYS.between(milestone.getCreatedAt(),LocalDateTime.now()))
+                .dueDay(DAYS.between(milestone.getCreatedAt(),LocalDate.now()))
                 .body(milestone.getBody())
                 .build();
     }
@@ -69,8 +70,8 @@ public class Milestone {
         this.title = milestoneRequest.getTitle();
         this.status = MilestoneStatus.valueOf(milestoneRequest.getStatus());
         this.personInCharge = personInCharge;
-        this.createdAt = LocalDateTime.parse(milestoneRequest.getCreatedAt(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        this.completedBy = LocalDateTime.parse(milestoneRequest.getCompletedBy(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        this.createdAt = LocalDate.parse(milestoneRequest.getCreatedAt(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        this.completedBy = LocalDate.parse(milestoneRequest.getCompletedBy(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         this.body = milestoneRequest.getBody();
     }
 }

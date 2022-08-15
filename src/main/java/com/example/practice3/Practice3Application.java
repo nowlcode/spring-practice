@@ -3,11 +3,21 @@ package com.example.practice3;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @SpringBootApplication
 public class Practice3Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Practice3Application.class, args);
+
+//        LocalDateTime date = LocalDateTime.parse("2022-07-27", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//        System.out.println(date);
+//        String str = "2021-11-05 13:47:13.248";
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+//        LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+//        System.out.println(dateTime);
     }
 
 }

@@ -31,7 +31,7 @@ public class MemberService {
         Member member = memberRepository.findById(memberId).orElseThrow(
                 ()-> new NullPointerException("Member not found!")
         );
-        member.update(member);
+        member.update(memberDto);
         memberRepository.save(member);
     }
 

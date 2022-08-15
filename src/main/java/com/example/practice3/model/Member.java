@@ -38,9 +38,9 @@ public class Member {
                 .build();
     }
 
-    public void update(Member member) {
-        this.name = member.getName();
-        this.picUrl = member.getPicUrl();
-        this.role = member.getRole();
+    public void update(MemberDto memberDto) {
+        this.name = memberDto.getName();
+        this.picUrl = memberDto.getPicUrl();
+        this.role = MemberRole.valueOf(memberDto.getRole());
     }
 }
