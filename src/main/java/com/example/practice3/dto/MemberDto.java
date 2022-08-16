@@ -1,7 +1,7 @@
 package com.example.practice3.dto;
 
 import com.example.practice3.model.Member;
-import com.example.practice3.model.MemberRole;
+import com.example.practice3.enums.MemberRole;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

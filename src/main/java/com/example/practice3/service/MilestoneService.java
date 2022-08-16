@@ -4,14 +4,13 @@ import com.example.practice3.dto.MilestoneRequest;
 import com.example.practice3.dto.MilestoneResponse;
 import com.example.practice3.model.Member;
 import com.example.practice3.model.Milestone;
-import com.example.practice3.model.MilestoneStatus;
+import com.example.practice3.enums.MilestoneStatus;
 import com.example.practice3.repository.MemberRepository;
 import com.example.practice3.repository.MilestoneRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;

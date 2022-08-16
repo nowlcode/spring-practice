@@ -2,11 +2,11 @@ package com.example.practice3.model;
 
 import com.example.practice3.dto.MilestoneRequest;
 import com.example.practice3.dto.MilestoneResponse;
+import com.example.practice3.enums.MilestoneStatus;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import static java.time.temporal.ChronoUnit.DAYS;
