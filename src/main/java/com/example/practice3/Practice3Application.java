@@ -1,5 +1,6 @@
 package com.example.practice3;
 
+import com.example.practice3.model.Course;
 import com.example.practice3.repository.CourseRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,7 +26,11 @@ public class Practice3Application {
     @Bean
     public CommandLineRunner demo(CourseRepository courseRepository){
         return (args)-> {
-
+            String titles = "Spring, React, Nodes.js, Java, Python";
+            String tutors = "Emily, Jason, Caroline, Joseph, David";
+            
+            Course course1 = new Course("Spring","Emily");
+            courseRepository.save(course1);
         };
     }
 }
