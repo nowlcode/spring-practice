@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @SpringBootApplication
 public class Practice3Application {
@@ -28,9 +29,16 @@ public class Practice3Application {
         return (args)-> {
             String titles = "Spring, React, Nodes.js, Java, Python";
             String tutors = "Emily, Jason, Caroline, Joseph, David";
-            
-            Course course1 = new Course("Spring","Emily");
-            courseRepository.save(course1);
+            String[] titleList = titles.split(",");
+            String[] tutorList = tutors.split(",");
+            for(int i = 0; i < titleList.length; i++){
+                Course course = new Course(titleList[i],tutorList[i]);
+                courseRepository.save(course);
+            }
+//            Course course1 = new Course("Spring","Emily");
+//            courseRepository.save(course1);
+            List<Course> courseList = courseRepository.findAll();
+            System.out.println(courseList);
         };
     }
 }
